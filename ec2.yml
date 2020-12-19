@@ -1,0 +1,21 @@
+- name: Ansible test for launching ec2 instances
+  hosts: localhost
+  tasks: 
+  - name: launching AWS instances by ansible
+    ec2:
+            key_name: abbb
+            group_id: sg-0e9ec2437e6c615ff
+            instance_type: t2.micro
+            image: "ami-08f63db601b82ff5f"
+            wait: yes
+            vpc_subnet_id: subnet-f52e50b9
+            region: ap-south-1
+            assign_public_ip: yes
+            count: 1
+            aws_access_key: AKIAV3HMDCTAASHRZ7PD 
+            aws_secret_key: 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
+    register: ec2
+  - name: debug
+    debug:
+            msg: ec2
+
